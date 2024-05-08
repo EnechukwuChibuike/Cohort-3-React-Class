@@ -1,18 +1,21 @@
-import { NavLink } from "react-router-dom";
+import { IoMdNotificationsOutline } from "react-icons/io";
 
 function Header() {
   return (
-    <header className="h-[10vh] bg-slate-100 flex justify-between items-center px-5">
-      <strong>Logo.</strong>
+    <header className="h-[10vh] bg-slate-100 flex justify-end items-center px-5 gap-5">
+      <input
+        type="text"
+        placeholder="search..."
+        className="h-[6vh] w-64 outline-none border-[1px] border-gray-600 bg-transparent rounded-full hover:border-2 pl-5"
+      />
 
-      <nav className="flex items-center gap-3">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
-        <NavLink to="/signup">
-          <button className="bg-blue-500 text-white px-5  py-3">Sign Up</button>
-        </NavLink>
-      </nav>
+      <button>
+        <IoMdNotificationsOutline className="text-xl" />
+      </button>
+
+      <div className="h-8 w-8 bg-blue-500 rounded-full flex justify-center items-center text-white">
+        EC
+      </div>
     </header>
   );
 }
