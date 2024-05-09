@@ -13,6 +13,7 @@ import Electronics from "./pages/Products/Electronics";
 import Bag from "./pages/Products/Bag";
 import Clothes from "./pages/Products/Clothes";
 import Jewelries from "./pages/Products/Jewelries";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         </Route>
 
         <Route path="/signup" element={<Signup />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
