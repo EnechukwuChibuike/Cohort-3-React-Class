@@ -1,3 +1,13 @@
 a.active {
   border-bottom: 2px solid blue;
 }
+
+.figure::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.figure {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
