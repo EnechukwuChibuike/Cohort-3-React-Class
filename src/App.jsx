@@ -1,26 +1,43 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./App.css";
-import { Context } from "./Context";
-import Header from "./Header";
-import Sidebar from "./Sidebar";
+import Reducer from "./Reducer";
 
 function App() {
-  const [toggleSidebar, setToggleSidebar] = useState(false);
+  const text = useRef();
+  const [error, setError] = useState(false);
 
+  const handleClick = () => {
+    if (text.current.value === "") {
+      setError(true);
+    } else {
+      alert(`Welcome ${text.current.value}`);
+    }
+  };
+
+  const handleChange = () => {
+    setError(false);
+  };
   return (
-    <>
-      <Context.Provider value={{ toggleSidebar, setToggleSidebar }}>
-        <Header />
+    <div className="space-x-3">
+      <input
+        className="border-[1px] p-2 border-black"
+        type="text"
+        ref={text}
+        onChange={handleChange}
+      />
 
-        <section className="flex">
-          <Sidebar />
-          <section className="p-2">
-            <strong>Hey [name]</strong>
-            <h3>Welcome to your dashboard</h3>
-          </section>
-        </section>
-      </Context.Provider>
-    </>
+      <button className="p-2 bg-gray-600" onClick={handleClick}>
+        click
+      </button>
+
+      {error && (
+        <div>
+          <small className="text-red-500">Please fill in your name</small>
+        </div>
+      )}
+
+      <Reducer />
+    </div>
   );
 }
 
