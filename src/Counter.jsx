@@ -1,19 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { Context } from "./Context";
+import Button from "./Button";
 
-//use Effect
 function Counter() {
-  const [counter, setCounter] = useState(0);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setCounter(counter + 1);
-    }, 1000);
-  });
-
+  const { counter } = useContext(Context);
   return (
-    <main className="flex h-screen justify-center items-center">
-      <h1 className="text-5xl">{counter}</h1>
-    </main>
+    <div>
+      <h1 className="text-4xl">{counter}</h1>
+      {/* <Button setCounter={setCounter} /> */}
+      <Button />
+    </div>
   );
 }
 

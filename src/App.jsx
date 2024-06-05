@@ -1,24 +1,26 @@
+import { useState } from "react";
 import "./App.css";
-import NotFound from "./NotFound";
-import ProductId from "./ProductId";
-// import Counter from "./Counter";
-import Promise from "./Promise";
-import Recipe from "./Recipe";
-import ScrollHeader from "./ScrollHeader";
-import { Routes, Route } from "react-router-dom";
+import { Context } from "./Context";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
 
-//use Effect
 function App() {
+  const [toggleSidebar, setToggleSidebar] = useState(false);
+
   return (
-    <main className="h-[200vh]">
-      <ScrollHeader />
-      <Routes>
-        <Route path="/" element={<Promise />} />
-        <Route path="/:productID" element={<ProductId />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      {/* <Recipe /> */}
-    </main>
+    <>
+      <Context.Provider value={{ toggleSidebar, setToggleSidebar }}>
+        <Header />
+
+        <section className="flex">
+          <Sidebar />
+          <section className="p-2">
+            <strong>Hey [name]</strong>
+            <h3>Welcome to your dashboard</h3>
+          </section>
+        </section>
+      </Context.Provider>
+    </>
   );
 }
 
